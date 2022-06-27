@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/movie_app_react/static/js/main.5ecbdeff.js",
+    "index.html": "/movie_app_react/index.html",
+    "main.5ecbdeff.js.map": "/movie_app_react/static/js/main.5ecbdeff.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.5ecbdeff.js"
+  ]
+}
