@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/movie_app_react/static/js/main.fffeedd2.js",
+    "main.js": "/movie_app_react/static/js/main.c8c36891.js",
     "index.html": "/movie_app_react/index.html",
-    "main.fffeedd2.js.map": "/movie_app_react/static/js/main.fffeedd2.js.map"
+    "main.c8c36891.js.map": "/movie_app_react/static/js/main.c8c36891.js.map"
   },
   "entrypoints": [
-    "static/js/main.fffeedd2.js"
+    "static/js/main.c8c36891.js"
   ]
 }
