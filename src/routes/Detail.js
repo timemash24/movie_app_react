@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import loadingStyles from './Loading.module.css';
+import styles from './Detail.module.css';
 
 function Detail() {
   const [loading, setLoading] = useState(true);
@@ -18,23 +20,41 @@ function Detail() {
   return (
     <div>
       {loading ? (
-        <h1>Loading...</h1>
-      ) : (
-        <div>
-          <img src={movie.large_cover_image} alt={movie.title} />
-          <h1>{movie.title_long}</h1>
-          <ul>
-            {movie.genres.map((g) => (
-              <li key={g}>{g}</li>
-            ))}
-          </ul>
-          <ul>
-            <li>{movie.language.toUpperCase()}</li>
-            <li>{movie.rating}</li>
-            <li>{movie.runtime} min</li>
-          </ul>
-          <p>{movie.description_full}</p>
+        <div className={loadingStyles.loading}>
+          <img src={require('../img/loading.gif')} alt="loading" />
+          <p>Loading...</p>
         </div>
+      ) : (
+        <section className={styles.details}>
+          <img
+            className={styles.details__img}
+            src={movie.large_cover_image}
+            alt={movie.title}
+          />
+          <div className={styles.details__info}>
+            <h1 className={styles.details__title}>{movie.title_long}</h1>
+            <ul className={styles.details__genres}>
+              {movie.genres.map((g) => (
+                <li key={g}>{g}</li>
+              ))}
+            </ul>
+            <ul className={styles.details__more}>
+              <li>
+                <i class="fa-solid fa-language"></i>
+                {movie.language.toUpperCase()}
+              </li>
+              <li>
+                <i class="fa-solid fa-star"></i>
+                {movie.rating}
+              </li>
+              <li>
+                <i class="fa-solid fa-stopwatch"></i>
+                {movie.runtime} min
+              </li>
+            </ul>
+            <p className={styles.details__desc}>{movie.description_full}</p>
+          </div>
+        </section>
       )}
     </div>
   );

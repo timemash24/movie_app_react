@@ -1,0 +1,14 @@
+.loading {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  background-color: black;
+  color: azure;
+  font-family: 'Raleway', sans-serif;
+  font-size: 28pt;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}

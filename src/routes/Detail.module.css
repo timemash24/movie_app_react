@@ -1,0 +1,78 @@
+:root {
+  /* Color */
+  --dark-gray-color: rgb(37, 37, 37);
+
+  /* Size */
+  --padding-large-size: 4em;
+
+  /* Font */
+  --font-xlarge: 40pt;
+}
+
+.details {
+  padding: var(--padding-size);
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--dark-gray-color);
+  color: var(--white-color);
+  font-family: 'Raleway', sans-serif;
+}
+
+.details__img {
+  margin: var(--padding-size);
+}
+
+.details__info {
+  display: flex;
+  flex-direction: column;
+  margin: var(--padding-large-size);
+}
+
+.details__title {
+  font-size: var(--font-xlarge);
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: calc(var(--padding-size) / 4);
+}
+
+.details__genres {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  color: var(--light-blue-color);
+}
+
+.details__genres li {
+  padding: calc(var(--padding-size) / 8);
+  margin-right: calc(var(--padding-size) / 4);
+  border: solid 0.1em;
+  border-radius: 0.1em;
+  font-size: var(--font-large);
+}
+
+.details__more {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.details__more li {
+  padding: calc(var(--padding-size) / 4);
+  margin: var(--padding-size) calc(var(--padding-size) / 6);
+  font-size: var(--font-large);
+}
+
+.details__more li i {
+  margin-right: calc(var(--padding-size) / 4);
+  color: var(--light-blue-color);
+}
+
+.details__desc {
+  font-size: var(--font-large);
+  line-height: calc(var(--padding-size) / 1.5);
+}
