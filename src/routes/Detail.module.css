@@ -19,6 +19,7 @@
 }
 
 .details__img {
+  width: auto;
   margin: var(--padding-size);
 }
 
