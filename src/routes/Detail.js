@@ -43,15 +43,15 @@ function Detail() {
               </ul>
               <ul className={styles.details__more}>
                 <li>
-                  <i class="fa-solid fa-language"></i>
+                  <i className="fa-solid fa-language"></i>
                   {movie.language.toUpperCase()}
                 </li>
                 <li>
-                  <i class="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
                   {movie.rating}
                 </li>
                 <li>
-                  <i class="fa-solid fa-stopwatch"></i>
+                  <i className="fa-solid fa-stopwatch"></i>
                   {movie.runtime} min
                 </li>
               </ul>
