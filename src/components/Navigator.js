@@ -1,12 +1,21 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { React, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import styles from './Navigator.module.css';
 
+let currentPath = '';
+
 function Navigator() {
+  let location = useLocation();
+
+  const onClick = () => {
+    if (currentPath === location.pathname) window.location.reload();
+
+    currentPath = location.pathname;
+  };
   return (
     <div className={styles.home}>
       <Link to="/">
-        <i className="fa-solid fa-film"></i>
+        <i onClick={onClick} className="fa-solid fa-film"></i>
       </Link>
     </div>
   );
