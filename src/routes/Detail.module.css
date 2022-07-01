@@ -10,7 +10,8 @@
 }
 
 .details {
-  padding: var(--padding-size);
+  padding: calc(var(--padding-size)) calc(var(--padding-size) * 2.5) 0
+    calc(var(--padding-size) * 2.5);
   display: flex;
   justify-content: space-between;
   background-color: var(--dark-gray-color);
@@ -19,13 +20,14 @@
 }
 
 .details__img {
-  width: auto;
+  transform: scale(0.85);
   margin: var(--padding-size);
 }
 
 .details__info {
   display: flex;
   flex-direction: column;
+  padding-top: var(--padding-size);
   margin: var(--padding-large-size);
 }
 

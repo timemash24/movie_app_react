@@ -1,0 +1,23 @@
+:root {
+  /* Color */
+  --dark-blue-color: rgb(90, 132, 180);
+}
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
+  padding: calc(var(--padding-size) / 3.5);
+  background-color: var(--dark-blue-color);
+  border-bottom: solid 4px;
+}
+
+.home i {
+  color: var(--white-color);
+  font-size: 3em;
+}
+
+.home i:hover {
+  color: lightblue;
+  transform: scale(0.96);
+}

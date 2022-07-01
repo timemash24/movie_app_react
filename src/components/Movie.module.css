@@ -19,6 +19,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  padding: var(--padding-size);
   background-color: var(--black-color);
   font-family: 'Raleway', sans-serif;
 }
