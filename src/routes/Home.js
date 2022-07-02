@@ -59,7 +59,7 @@ function Home() {
       {loading ? (
         <Loading />
       ) : (
-        <main>
+        <main className={styles.home}>
           <Navigator />
           <div className={styles.sort}>
             <select onChange={onChange} value={sort}>

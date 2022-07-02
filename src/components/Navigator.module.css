@@ -1,18 +1,21 @@
-.home {
+.nav {
+  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 4rem;
+  width: 100%;
   padding: calc(var(--padding-size) / 3.5);
   background-color: var(--secondary-dark-color);
+  z-index: 2;
 }
 
-.home i {
+.nav i {
   color: var(--primary-light-color);
   font-size: 3em;
 }
 
-.home i:hover {
+.nav i:hover {
   color: var(--primary-dark-color);
   transform: scale(0.96);
 }

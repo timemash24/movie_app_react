@@ -20,10 +20,17 @@
   --font-small: 11pt;
 }
 
+.home {
+  display: flex;
+  flex-direction: column;
+}
+
 .sort {
+  position: relative;
   display: flex;
   justify-content: flex-end;
-  padding-right: var(--margin-size);
+  margin-top: calc(var(--margin-size) * 3);
+  padding-right: var(--padding-size);
   background-color: var(--primary-color);
 }
 

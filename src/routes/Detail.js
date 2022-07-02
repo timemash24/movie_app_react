@@ -23,7 +23,7 @@ function Detail() {
       {loading ? (
         <Loading />
       ) : (
-        <main>
+        <main className={styles.main}>
           <Navigator />
           <section className={styles.details}>
             <img

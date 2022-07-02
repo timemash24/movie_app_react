@@ -13,7 +13,7 @@ function Navigator() {
     currentPath = location.pathname;
   };
   return (
-    <div className={styles.home}>
+    <div className={styles.nav}>
       <Link to="/">
         <i onClick={onClick} className="fa-solid fa-film"></i>
       </Link>
