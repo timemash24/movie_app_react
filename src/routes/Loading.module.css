@@ -4,10 +4,11 @@
   width: 100vw;
   height: 100vh;
   margin: 0;
-  background-color: black;
-  color: azure;
+  background-color: var(--primary-color);
+  color: var(--black-color);
   font-family: 'Raleway', sans-serif;
   font-size: 28pt;
+  font-weight: bold;
   text-align: center;
   justify-content: center;
   align-items: center;

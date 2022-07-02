@@ -1,7 +1,4 @@
 :root {
-  /* Color */
-  --dark-gray-color: rgb(37, 37, 37);
-
   /* Size */
   --padding-large-size: 4em;
 
@@ -10,13 +7,14 @@
 }
 
 .details {
-  padding: calc(var(--padding-size)) calc(var(--padding-size) * 2.5) 0
-    calc(var(--padding-size) * 2.5);
+  margin: calc(var(--padding-size) * 1.5);
+  padding: calc(var(--padding-size) / 1.5) calc(var(--padding-size) * 2) 0
+    calc(var(--padding-size) * 2);
   display: flex;
   justify-content: space-between;
-  background-color: var(--dark-gray-color);
-  color: var(--white-color);
+  color: var(--black-color);
   font-family: 'Raleway', sans-serif;
+  border: var(--secondary-dark-color) double 4px;
 }
 
 .details__img {
@@ -45,7 +43,7 @@
   flex-wrap: wrap;
   justify-content: center;
   text-align: center;
-  color: var(--light-blue-color);
+  color: var(--secondary-color);
 }
 
 .details__genres li {
@@ -54,6 +52,7 @@
   border: solid 0.1em;
   border-radius: 0.1em;
   font-size: var(--font-large);
+  font-weight: bold;
 }
 
 .details__more {
@@ -72,7 +71,7 @@
 
 .details__more li i {
   margin-right: calc(var(--padding-size) / 4);
-  color: var(--light-blue-color);
+  color: var(--secondary-color);
 }
 
 .details__desc {

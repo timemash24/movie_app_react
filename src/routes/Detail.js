@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Navigator from '../components/Navigator';
-import loadingStyles from './Loading.module.css';
+import Loading from './Loading';
 import styles from './Detail.module.css';
 
 function Detail() {
@@ -21,10 +21,7 @@ function Detail() {
   return (
     <div>
       {loading ? (
-        <div className={loadingStyles.loading}>
-          <img src={require('../img/loading.gif')} alt="loading" />
-          <p>Loading...</p>
-        </div>
+        <Loading />
       ) : (
         <main>
           <Navigator />

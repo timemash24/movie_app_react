@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import Navigator from '../components/Navigator';
 import Movie from '../components/Movie';
+import Loading from './Loading';
 import styles from '../components/Movie.module.css';
-import loadingStyles from './Loading.module.css';
 
 function Home() {
   const [loading, setLoading] = useState(true);
@@ -57,23 +57,22 @@ function Home() {
   return (
     <div>
       {loading ? (
-        <div className={loadingStyles.loading}>
-          <img src={require('../img/loading.gif')} alt="loading" />
-          <p>Loading...</p>
-        </div>
+        <Loading />
       ) : (
         <main>
           <Navigator />
-          <select onChange={onChange} value={sort}>
-            <option value="all">All</option>
-            {totalGenres.map((g, i) => (
-              <option value={g} key={i}>
-                {g}
-              </option>
-            ))}
-          </select>
+          <div className={styles.sort}>
+            <select onChange={onChange} value={sort}>
+              <option value="all">All</option>
+              {totalGenres.map((g, i) => (
+                <option value={g} key={i}>
+                  {g}
+                </option>
+              ))}
+            </select>
+          </div>
 
-          <section className={styles.home}>
+          <section className={styles.movies}>
             {movies.map((movie, i) => (
               <Movie
                 key={movie.id}
