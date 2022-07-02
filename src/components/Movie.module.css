@@ -38,7 +38,7 @@
 .movies {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: flex-start;
   padding: var(--padding-size);
   background-color: var(--primary-color);
   font-family: 'Raleway', sans-serif;
