@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Navigator from '../components/Navigator';
 import Movie from '../components/Movie';
@@ -6,20 +7,32 @@ import styles from '../components/Movie.module.css';
 
 function Home() {
   const [loading, setLoading] = useState(true);
+  const [pageNum, setPageNum] = useState(1);
+  const [pageNums, setPageNums] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
   const [movies, setMovies] = useState([]);
   const [totalGenres, setTotalGenres] = useState([]);
   const [sort, setSort] = useState('all');
   const [hidden, setHidden] = useState([]);
+
   const getMovies = async () => {
-    const json = await (
-      await fetch(
-        'https://yts.mx/api/v2/list_movies.json?minimum_rating=9&sort_by=year'
-      )
-    ).json();
-    const movieList = json.data.movies;
-    setMovies(movieList);
-    getGenres(movieList);
-    setLoading(false);
+    try {
+      setLoading(true);
+      const res = await axios.get('https://yts.mx/api/v2/list_movies.json', {
+        params: {
+          minimum_rating: 7,
+          sort_by: 'download_count',
+          page: pageNum,
+          limit: 30,
+        },
+      });
+      console.log(res.data.data);
+      const movieList = res.data.data.movies;
+      setMovies(movieList);
+      getGenres(movieList);
+      setLoading(false);
+    } catch (error) {
+      throw new Error(`Failed to load movie list!${error}`);
+    }
   };
 
   const getGenres = (movieList) => {
@@ -40,7 +53,7 @@ function Home() {
 
   useEffect(() => {
     getMovies();
-  }, []);
+  }, [pageNum, pageNums]);
 
   const onChange = (event) => {
     event.preventDefault();
@@ -52,6 +65,32 @@ function Home() {
     });
 
     setHidden(hiddens);
+  };
+
+  const handlePageNumBtn = (event) => {
+    setPageNum(event.target.value);
+  };
+
+  const handleNextBtn = (event) => {
+    event.preventDefault();
+    if (pageNum <= 100) {
+      if (pageNum >= pageNums[9]) {
+        const newPageNums = pageNums.map((n) => n + 10);
+        setPageNums(newPageNums);
+      }
+      setPageNum(pageNum + 1);
+    }
+  };
+
+  const handlePrevBtn = (event) => {
+    event.preventDefault();
+    if (pageNum !== 1) {
+      if (pageNum <= pageNums[0]) {
+        const newPageNums = pageNums.map((n) => n - 10);
+        setPageNums(newPageNums);
+      }
+      setPageNum(pageNum - 1);
+    }
   };
 
   return (
@@ -85,6 +124,33 @@ function Home() {
               />
             ))}
           </section>
+          <ul className={styles.pageNums}>
+            <li>
+              <i onClick={handlePrevBtn} className="fa-solid fa-angle-left"></i>
+            </li>
+            {pageNums.map((n, i) =>
+              n !== pageNum ? (
+                <li key={`pageNum${i}`} onClick={handlePageNumBtn} value={n}>
+                  {n}
+                </li>
+              ) : (
+                <li
+                  key={`pageNum${i}`}
+                  className={styles.pageNums_selected}
+                  onClick={handlePageNumBtn}
+                  value={n}
+                >
+                  {n}
+                </li>
+              )
+            )}
+            <li>
+              <i
+                onClick={handleNextBtn}
+                className="fa-solid fa-angle-right"
+              ></i>
+            </li>
+          </ul>
         </main>
       )}
     </div>

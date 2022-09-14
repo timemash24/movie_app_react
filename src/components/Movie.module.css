@@ -105,3 +105,20 @@
   border: solid 0.1em;
   font-size: var(--font-small);
 }
+
+.pageNums {
+  display: flex;
+  font-size: 17pt;
+  padding-bottom: var(--padding-size);
+  align-self: center;
+}
+
+.pageNums li {
+  margin: calc(var(--margin-size) / 6);
+  cursor: pointer;
+}
+
+.pageNums_selected {
+  font-weight: bold;
+  color: indianred;
+}
