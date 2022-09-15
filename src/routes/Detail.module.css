@@ -9,15 +9,18 @@
 .main {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .details {
+  width: 1570px;
   margin: calc(var(--padding-size) * 4) calc(var(--padding-size) * 1.5)
     calc(var(--padding-size) * 1.5);
   padding: calc(var(--padding-size) / 1.5) calc(var(--padding-size) * 2) 0
     calc(var(--padding-size) * 2);
   display: flex;
   justify-content: space-between;
+  align-content: center;
   color: var(--black-color);
   font-family: 'Raleway', sans-serif;
   border: var(--secondary-dark-color) double 4px;
@@ -83,4 +86,28 @@
 .details__desc {
   font-size: var(--font-large);
   line-height: calc(var(--padding-size) / 1.5);
+}
+
+.suggestion {
+  width: 100%;
+  min-width: 1570px;
+}
+
+.suggestion__title {
+  font-size: var(--font-xlarge);
+  text-align: center;
+}
+
+.suggestion ul {
+  display: flex;
+  justify-content: space-around;
+  padding: var(--padding-size);
+  font-size: var(--font-large);
+  text-align: center;
+}
+
+.suggestion img {
+  transform: scale(1.2);
+  margin-top: var(--margin-size);
+  cursor: pointer;
 }

@@ -45,8 +45,8 @@ Movie.propTypes = {
   title: PropTypes.string.isRequired,
   summary: PropTypes.string.isRequired,
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-  liked: PropTypes.bool.isRequired,
-  onClick: PropTypes.func.isRequired,
+  liked: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 
 export default Movie;
