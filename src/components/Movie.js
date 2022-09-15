@@ -1,27 +1,37 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Movie.module.css';
 
-function Movie({ id, coverImg, title, summary, genres, hidden }) {
+function Movie(props) {
   return (
-    <div style={hidden ? { display: 'none' } : null}>
+    <div style={props.hidden ? { display: 'none' } : null}>
       {
         <section className={styles.movie}>
-          <img src={coverImg} alt={title} />
+          <img src={props.coverImg} alt={props.title} />
           <div className={styles.movie__info}>
             <ul className={styles.movie__genres}>
-              {genres.map((g) => (
+              {props.genres.map((g) => (
                 <li key={g}>{g}</li>
               ))}
             </ul>
             <h2 className={styles.movie__title}>
-              <Link className={styles.movie__link} to={`/movie/${id}`}>
-                {title}
+              <Link className={styles.movie__link} to={`/movie/${props.id}`}>
+                {props.title}
               </Link>
             </h2>
             <p className={styles.movie__summary}>
-              {summary.length > 235 ? `${summary.slice(0, 235)}...` : summary}
+              {props.summary.length > 150
+                ? `${props.summary.slice(0, 150)}...`
+                : props.summary}
             </p>
+          </div>
+          <div className={styles.movie__like} data-movie-id={props.id}>
+            {!props.liked ? (
+              <i className="fa-regular fa-heart" onClick={props.onClick}></i>
+            ) : (
+              <i className="fa-solid fa-heart" onClick={props.onClick}></i>
+            )}
           </div>
         </section>
       }
@@ -35,6 +45,8 @@ Movie.propTypes = {
   title: PropTypes.string.isRequired,
   summary: PropTypes.string.isRequired,
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
+  liked: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default Movie;

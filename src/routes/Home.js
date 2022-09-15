@@ -6,6 +6,7 @@ import Loading from './Loading';
 import styles from '../components/Movie.module.css';
 
 function Home() {
+  const LOCALSTORAGE_KEY = 'likedMovies';
   const [loading, setLoading] = useState(true);
   const [pageNum, setPageNum] = useState(1);
   const [pageNums, setPageNums] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
@@ -13,6 +14,7 @@ function Home() {
   const [totalGenres, setTotalGenres] = useState([]);
   const [sort, setSort] = useState('all');
   const [hidden, setHidden] = useState([]);
+  const [liked, setLiked] = useState([]);
 
   const getMovies = async () => {
     try {
@@ -25,10 +27,11 @@ function Home() {
           limit: 30,
         },
       });
-      console.log(res.data.data);
+
       const movieList = res.data.data.movies;
       setMovies(movieList);
       getGenres(movieList);
+      getLiked();
       setLoading(false);
     } catch (error) {
       throw new Error(`Failed to load movie list!${error}`);
@@ -51,6 +54,15 @@ function Home() {
     else return true;
   };
 
+  const getLiked = () => {
+    const likedMovies = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
+    if (likedMovies) {
+      const liked = likedMovies.map((movie) => movie.id);
+      setLiked([...liked]);
+      console.log(liked);
+    }
+  };
+
   useEffect(() => {
     getMovies();
   }, [pageNum, pageNums]);
@@ -65,6 +77,29 @@ function Home() {
     });
 
     setHidden(hiddens);
+  };
+
+  const handleLikeBtn = (_, movie) => {
+    const likedMovies = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
+    if (likedMovies) {
+      const newLikedMovies = likedMovies.filter(
+        (likedMovie) => likedMovie.id !== movie.id
+      );
+      if (newLikedMovies.length === likedMovies.length) {
+        localStorage.setItem(
+          LOCALSTORAGE_KEY,
+          JSON.stringify([...newLikedMovies, movie])
+        );
+      } else {
+        localStorage.setItem(
+          LOCALSTORAGE_KEY,
+          JSON.stringify([...newLikedMovies])
+        );
+      }
+    } else {
+      localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify([movie]));
+    }
+    getLiked();
   };
 
   const handlePageNumBtn = (event) => {
@@ -121,6 +156,8 @@ function Home() {
                 summary={movie.summary}
                 genres={movie.genres}
                 hidden={hidden[i]}
+                liked={liked.includes(movie.id)}
+                onClick={(_) => handleLikeBtn(_, movie)}
               />
             ))}
           </section>
