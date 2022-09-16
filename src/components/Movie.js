@@ -7,7 +7,9 @@ function Movie(props) {
     <div style={props.hidden ? { display: 'none' } : null}>
       {
         <section className={styles.movie}>
-          <img src={props.coverImg} alt={props.title} />
+          <Link className={styles.movie__link} to={`/movie/${props.id}`}>
+            <img src={props.coverImg} alt={props.title} />
+          </Link>
           <div className={styles.movie__info}>
             <ul className={styles.movie__genres}>
               {props.genres.map((g) => (
