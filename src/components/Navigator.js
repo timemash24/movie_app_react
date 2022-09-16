@@ -18,7 +18,7 @@ function Navigator() {
         <i onClick={onClick} className="fa-solid fa-film"></i>
       </Link>
       <Link to="/mypage">
-        <i className="fa-solid fa-user"></i>
+        <i onClick={onClick} className="fa-solid fa-user"></i>
       </Link>
     </div>
   );

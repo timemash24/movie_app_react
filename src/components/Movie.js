@@ -30,7 +30,11 @@ function Movie(props) {
             {!props.liked ? (
               <i className="fa-regular fa-heart" onClick={props.onClick}></i>
             ) : (
-              <i className="fa-solid fa-heart" onClick={props.onClick}></i>
+              <i
+                className="fa-solid fa-heart"
+                onClick={props.onClick}
+                style={{ color: 'indianred' }}
+              ></i>
             )}
           </div>
         </section>

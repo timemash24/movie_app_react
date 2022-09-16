@@ -132,3 +132,17 @@
   font-weight: bold;
   color: indianred;
 }
+
+.mypage {
+  display: flex;
+  flex-direction: column;
+}
+
+.mypage__title {
+  position: absolute;
+  width: 100%;
+  padding-top: calc(var(--padding-size) * 2);
+  font-size: var(--font-large);
+  text-align: center;
+  z-index: 1;
+}
