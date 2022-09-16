@@ -16,23 +16,16 @@ function MovieList({ movies, genres, isLikedPage }) {
 
   const getLikedMovies = () => {
     const likedMovies = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
-    setLikedMovies([...likedMovies]);
-  };
-
-  const getHidden = (genres, sort) => {
-    if (sort === 'all') return false;
-    if (genres.includes(sort)) return false;
-    else return true;
+    if (likedMovies) setLikedMovies([...likedMovies]);
   };
 
   const getLiked = () => {
     const likedMovies = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
-    setLikedMovies([...likedMovies]);
 
     if (likedMovies) {
+      setLikedMovies([...likedMovies]);
       const liked = likedMovies.map((movie) => movie.id);
       setLiked([...liked]);
-
       console.log(liked);
     }
   };
@@ -90,7 +83,7 @@ function MovieList({ movies, genres, isLikedPage }) {
 
       <section className={styles.movies}>
         {isLikedPage
-          ? likedMovies.map((movie, i) => (
+          ? likedMovies?.map((movie, i) => (
               <Movie
                 key={movie.id}
                 id={movie.id}
@@ -103,7 +96,7 @@ function MovieList({ movies, genres, isLikedPage }) {
                 onClick={(_) => handleLikeBtn(_, movie)}
               />
             ))
-          : movies.map((movie, i) => (
+          : movies?.map((movie, i) => (
               <Movie
                 key={movie.id}
                 id={movie.id}
