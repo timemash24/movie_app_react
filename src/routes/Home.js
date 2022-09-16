@@ -1,20 +1,16 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import Navigator from '../components/Navigator';
-import Movie from '../components/Movie';
-import Loading from './Loading';
 import styles from '../components/Movie.module.css';
+import MovieList from '../components/MovieList';
+import Navigator from '../components/Navigator';
+import Loading from './Loading';
 
 function Home() {
-  const LOCALSTORAGE_KEY = 'likedMovies';
   const [loading, setLoading] = useState(true);
   const [pageNum, setPageNum] = useState(1);
   const [pageNums, setPageNums] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
   const [movies, setMovies] = useState([]);
   const [totalGenres, setTotalGenres] = useState([]);
-  const [sort, setSort] = useState('all');
-  const [hidden, setHidden] = useState([]);
-  const [liked, setLiked] = useState([]);
 
   const getMovies = async () => {
     try {
@@ -31,7 +27,7 @@ function Home() {
       const movieList = res.data.data.movies;
       setMovies(movieList);
       getGenres(movieList);
-      getLiked();
+      // getLiked();
       setLoading(false);
     } catch (error) {
       throw new Error(`Failed to load movie list!${error}`);
@@ -48,59 +44,9 @@ function Home() {
     setTotalGenres([...gSet]);
   };
 
-  const getHidden = (genres, sort) => {
-    if (sort === 'all') return false;
-    if (genres.includes(sort)) return false;
-    else return true;
-  };
-
-  const getLiked = () => {
-    const likedMovies = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
-    if (likedMovies) {
-      const liked = likedMovies.map((movie) => movie.id);
-      setLiked([...liked]);
-      console.log(liked);
-    }
-  };
-
   useEffect(() => {
     getMovies();
   }, [pageNum, pageNums]);
-
-  const onChange = (event) => {
-    event.preventDefault();
-    setSort(event.target.value);
-
-    const hiddens = [];
-    movies.forEach((movie) => {
-      hiddens.push(getHidden(movie.genres, event.target.value));
-    });
-
-    setHidden(hiddens);
-  };
-
-  const handleLikeBtn = (_, movie) => {
-    const likedMovies = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
-    if (likedMovies) {
-      const newLikedMovies = likedMovies.filter(
-        (likedMovie) => likedMovie.id !== movie.id
-      );
-      if (newLikedMovies.length === likedMovies.length) {
-        localStorage.setItem(
-          LOCALSTORAGE_KEY,
-          JSON.stringify([...newLikedMovies, movie])
-        );
-      } else {
-        localStorage.setItem(
-          LOCALSTORAGE_KEY,
-          JSON.stringify([...newLikedMovies])
-        );
-      }
-    } else {
-      localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify([movie]));
-    }
-    getLiked();
-  };
 
   const handlePageNumBtn = (event) => {
     setPageNum(event.target.value);
@@ -135,32 +81,7 @@ function Home() {
       ) : (
         <main className={styles.home}>
           <Navigator />
-          <div className={styles.sort}>
-            <select onChange={onChange} value={sort}>
-              <option value="all">All</option>
-              {totalGenres.map((g, i) => (
-                <option value={g} key={i}>
-                  {g}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <section className={styles.movies}>
-            {movies.map((movie, i) => (
-              <Movie
-                key={movie.id}
-                id={movie.id}
-                coverImg={movie.medium_cover_image}
-                title={movie.title}
-                summary={movie.summary}
-                genres={movie.genres}
-                hidden={hidden[i]}
-                liked={liked.includes(movie.id)}
-                onClick={(_) => handleLikeBtn(_, movie)}
-              />
-            ))}
-          </section>
+          <MovieList movies={movies} genres={totalGenres} isLikedPage={false} />
           <ul className={styles.pageNums}>
             <li>
               <i onClick={handlePrevBtn} className="fa-solid fa-angle-left"></i>

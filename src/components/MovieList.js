@@ -38,7 +38,6 @@ function MovieList({ movies, genres, isLikedPage }) {
   };
 
   const onChange = (event) => {
-    // event.preventDefault();
     const curSort = event.target.value;
     setSort(curSort);
 
@@ -47,7 +46,6 @@ function MovieList({ movies, genres, isLikedPage }) {
     movieList.forEach((movie) => {
       if (curSort !== 'all' && !movie.genres.includes(curSort))
         hiddens.push(movie.id);
-      //   hiddens.push(getHidden(movie.genres, event.target.value));
     });
     console.log(hiddens);
     setHidden(hiddens);
