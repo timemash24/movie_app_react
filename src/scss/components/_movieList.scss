@@ -42,11 +42,8 @@
     padding-left: $padding-size;
     align-items: flex-start;
   }
-  &__title {
-    margin: calc($padding-size / 2);
-    &:hover {
-      transform: scale(1.07);
-    }
+  &__title:hover {
+    transform: scale(1.07);
   }
   &__link {
     font-weight: bold;

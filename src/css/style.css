@@ -62,9 +62,6 @@
   padding-left: 2em;
   align-items: flex-start;
 }
-.movie__title {
-  margin: 1em;
-}
 .movie__title:hover {
   transform: scale(1.07);
 }

@@ -17,7 +17,9 @@ function Movie(props) {
             </ul>
             <h2 className="movie__title">
               <Link className="movie__link" to={`/movie/${props.id}`}>
-                {props.title}
+                {props.title.length > 30
+                  ? `${props.title.substring(0, 30)}...`
+                  : props.title}
               </Link>
             </h2>
             <p className="movie__summary">
