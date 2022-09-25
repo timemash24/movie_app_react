@@ -1,8 +1,6 @@
-import styles from './Loading.module.css';
-
 function Loading() {
   return (
-    <div className={styles.loading}>
+    <div className="loading">
       <img src={require('../img/loading.gif')} alt="loading" />
       <p>Loading...</p>
     </div>

@@ -1,0 +1,14 @@
+@use '../variable.scss' as *;
+
+.mypage {
+  display: flex;
+  flex-direction: column;
+  &__title {
+    position: absolute;
+    width: 100%;
+    padding-top: calc($padding-size * 2);
+    font-size: $font-large;
+    text-align: center;
+    z-index: 1;
+  }
+}

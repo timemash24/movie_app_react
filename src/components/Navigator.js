@@ -1,6 +1,5 @@
 import { React } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import styles from './Navigator.module.css';
 
 let currentPath = '';
 
@@ -13,7 +12,7 @@ function Navigator() {
     currentPath = location.pathname;
   };
   return (
-    <div className={styles.nav}>
+    <div className="nav">
       <Link to="/">
         <i onClick={onClick} className="fa-solid fa-film"></i>
       </Link>

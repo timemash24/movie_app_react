@@ -1,0 +1,21 @@
+@use '../variable' as *;
+
+.home {
+  display: flex;
+  flex-direction: column;
+}
+
+.pageNums {
+  display: flex;
+  font-size: 17pt;
+  padding-bottom: $padding-size;
+  align-self: center;
+  & li {
+    margin: calc($margin-size / 6);
+    cursor: pointer;
+  }
+  &_selected {
+    font-weight: bold;
+    color: indianred;
+  }
+}

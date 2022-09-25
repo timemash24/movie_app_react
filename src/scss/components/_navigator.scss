@@ -1,0 +1,21 @@
+@use '../variable' as *;
+
+.nav {
+  position: fixed;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 4rem;
+  width: 100%;
+  padding: calc($padding-size / 3.5);
+  background-color: $secondary-dark-color;
+  z-index: 2;
+  & i {
+    color: $primary-light-color;
+    font-size: 3em;
+    &:hover {
+      color: $primary-dark-color;
+      transform: scale(0.96);
+    }
+  }
+}

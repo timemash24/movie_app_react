@@ -1,9 +1,8 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import styles from '../components/Movie.module.css';
+import Loading from '../components/Loading';
 import MovieList from '../components/MovieList';
 import Navigator from '../components/Navigator';
-import Loading from './Loading';
 
 function Home() {
   const [loading, setLoading] = useState(true);
@@ -11,28 +10,6 @@ function Home() {
   const [pageNums, setPageNums] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
   const [movies, setMovies] = useState([]);
   const [totalGenres, setTotalGenres] = useState([]);
-
-  const getMovies = async () => {
-    try {
-      setLoading(true);
-      const res = await axios.get('https://yts.mx/api/v2/list_movies.json', {
-        params: {
-          minimum_rating: 7,
-          sort_by: 'download_count',
-          page: pageNum,
-          limit: 30,
-        },
-      });
-
-      const movieList = res.data.data.movies;
-      setMovies(movieList);
-      getGenres(movieList);
-      // getLiked();
-      setLoading(false);
-    } catch (error) {
-      throw new Error(`Failed to load movie list!${error}`);
-    }
-  };
 
   const getGenres = (movieList) => {
     const gSet = new Set();
@@ -45,6 +22,27 @@ function Home() {
   };
 
   useEffect(() => {
+    const getMovies = async () => {
+      try {
+        setLoading(true);
+        const res = await axios.get('https://yts.mx/api/v2/list_movies.json', {
+          params: {
+            minimum_rating: 7,
+            sort_by: 'download_count',
+            page: pageNum,
+            limit: 30,
+          },
+        });
+
+        const movieList = res.data.data.movies;
+        setMovies(movieList);
+        getGenres(movieList);
+        // getLiked();
+        setLoading(false);
+      } catch (error) {
+        throw new Error(`Failed to load movie list!${error}`);
+      }
+    };
     getMovies();
   }, [pageNum, pageNums]);
 
@@ -79,10 +77,10 @@ function Home() {
       {loading ? (
         <Loading />
       ) : (
-        <main className={styles.home}>
+        <main className="home">
           <Navigator />
           <MovieList movies={movies} genres={totalGenres} isLikedPage={false} />
-          <ul className={styles.pageNums}>
+          <ul className="pageNums">
             <li>
               <i onClick={handlePrevBtn} className="fa-solid fa-angle-left"></i>
             </li>
@@ -94,7 +92,7 @@ function Home() {
               ) : (
                 <li
                   key={`pageNum${i}`}
-                  className={styles.pageNums_selected}
+                  className="pageNums_selected"
                   onClick={handlePageNumBtn}
                   value={n}
                 >

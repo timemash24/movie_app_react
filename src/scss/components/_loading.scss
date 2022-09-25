@@ -1,11 +1,13 @@
+@use '../variable' as *;
+
 .loading {
   display: flex;
   flex-direction: column;
   width: 100vw;
   height: 100vh;
   margin: 0;
-  background-color: var(--primary-color);
-  color: var(--black-color);
+  background-color: $primary-color;
+  color: $black-color;
   font-family: 'Raleway', sans-serif;
   font-size: 28pt;
   font-weight: bold;

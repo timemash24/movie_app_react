@@ -1,9 +1,6 @@
-import { useEffect } from 'react';
-import { useState } from 'react';
-import Navigator from '../components/Navigator';
-import Movie from '../components/Movie';
+import { useEffect, useState } from 'react';
 import MovieList from '../components/MovieList';
-import styles from '../components/Movie.module.css';
+import Navigator from '../components/Navigator';
 
 function MyPage() {
   const LOCALSTORAGE_KEY = 'likedMovies';
@@ -11,14 +8,13 @@ function MyPage() {
   const [totalGenres, setTotalGenres] = useState([]);
 
   useEffect(() => {
+    const getLikedMovies = () => {
+      const movies = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
+      setLikedMovies(movies);
+      getGenres(movies);
+    };
     getLikedMovies();
   }, []);
-
-  const getLikedMovies = () => {
-    const movies = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
-    setLikedMovies(movies);
-    getGenres(movies);
-  };
 
   const getGenres = (movieList) => {
     if (!movieList) return;
@@ -32,9 +28,9 @@ function MyPage() {
   };
 
   return (
-    <div className={styles.mypage}>
+    <div className="mypage">
       <Navigator />
-      <h1 className={styles.mypage__title}>My Favorite Movies</h1>
+      <h1 className="mypage__title">My Favorite Movies</h1>
       <MovieList movies={likedMovies} genres={totalGenres} isLikedPage={true} />
     </div>
   );

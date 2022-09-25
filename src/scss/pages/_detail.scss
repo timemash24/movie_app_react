@@ -1,0 +1,96 @@
+@use '../variable' as *;
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.details {
+  width: 1570px;
+  margin: calc($padding-size * 4) calc($padding-size * 1.5)
+    calc($padding-size * 1.5);
+  padding: calc($padding-size / 1.5) calc($padding-size * 2) 0
+    calc($padding-size * 2);
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  color: $black-color;
+  font-family: 'Raleway', sans-serif;
+  border: $secondary-dark-color double 4px;
+
+  &__img {
+    transform: scale(0.85);
+    margin: $padding-size;
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    padding-top: $padding-size;
+    margin: $padding-large-size;
+  }
+  &__title {
+    font-size: $font-xlarge;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: calc($padding-size / 4);
+  }
+  &__genres {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    color: $secondary-color;
+    & li {
+      padding: calc($padding-size / 8);
+      margin-right: calc($padding-size / 4);
+      border: solid 0.1em;
+      border-radius: 0.1em;
+      font-size: $font-large;
+      font-weight: bold;
+    }
+  }
+  &__more {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    & li {
+      padding: calc($padding-size / 4);
+      margin: $padding-size calc($padding-size / 6);
+      font-size: $font-large;
+      & i {
+        margin-right: calc($padding-size / 4);
+        color: $secondary-color;
+      }
+    }
+  }
+  &__desc {
+    font-size: $font-large;
+    line-height: calc($padding-size / 1.5);
+  }
+}
+
+.suggestion {
+  width: 100%;
+  min-width: 1570px;
+  &__title {
+    font-size: $font-large;
+    text-align: center;
+  }
+  & ul {
+    display: flex;
+    justify-content: space-around;
+    padding: $padding-size;
+    font-size: $font-large;
+    text-align: center;
+  }
+  & img {
+    transform: scale(1.2);
+    margin-top: $margin-size;
+    cursor: pointer;
+  }
+}

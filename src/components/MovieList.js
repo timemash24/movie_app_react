@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import Movie from '../components/Movie';
-import styles from '../components/Movie.module.css';
 
 function MovieList({ movies, genres, isLikedPage }) {
   const LOCALSTORAGE_KEY = 'likedMovies';
@@ -70,7 +69,7 @@ function MovieList({ movies, genres, isLikedPage }) {
 
   return (
     <div>
-      <div className={styles.sort}>
+      <div className="sort">
         <select onChange={onChange} value={sort}>
           <option value="all">All</option>
           {genres.map((g, i) => (
@@ -81,7 +80,7 @@ function MovieList({ movies, genres, isLikedPage }) {
         </select>
       </div>
 
-      <section className={styles.movies}>
+      <section className="movies">
         {isLikedPage
           ? likedMovies?.map((movie, i) => (
               <Movie
