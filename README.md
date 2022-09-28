@@ -4,10 +4,14 @@
 Demo site
 🔗 https://timemash24.github.io/movie_app_react/
 
-
+### Home
 ![movieapp_1](https://user-images.githubusercontent.com/56548122/192761781-11f0a35c-d083-492e-9c24-bf382e5f1260.PNG)
+
+### Detail
 ![movieapp_2](https://user-images.githubusercontent.com/56548122/192761814-a4e93071-5d92-413a-8814-f2fc4d76fb34.PNG)
 ![movieapp_3](https://user-images.githubusercontent.com/56548122/192761831-9fbc18db-8eb7-4501-9198-926bcff1e0aa.PNG)
+
+### My page
 ![movieapp_4](https://user-images.githubusercontent.com/56548122/192761845-0ae3b2c7-e8cd-4e70-b744-6ccabdb44c10.PNG)
 
 ## 사용 스택
