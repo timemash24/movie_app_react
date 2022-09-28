@@ -15,7 +15,7 @@ Demo site
 ![movieapp_4](https://user-images.githubusercontent.com/56548122/192761845-0ae3b2c7-e8cd-4e70-b744-6ccabdb44c10.PNG)
 
 ## 사용 스택
-React.js, Javascript, HTML, CSS
+React.js, Javascript, HTML, CSS, SASS
 
 ## 기능 설명
 - 영화 목록 표시
