@@ -57,6 +57,7 @@
 }
 .movie__info {
   display: flex;
+  width: 30rem;
   flex-direction: column;
   justify-content: space-around;
   padding-left: 2em;
@@ -155,7 +156,8 @@
 }
 
 .details {
-  width: 1570px;
+  width: 80%;
+  min-width: 1220px;
   margin: 8em 3em 3em;
   padding: 1.3333333333em 4em 0 4em;
   display: flex;
@@ -171,6 +173,7 @@
 }
 .details__info {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   padding-top: 2em;
   margin: 4em;
@@ -224,6 +227,7 @@
   min-width: 1570px;
 }
 .suggestion__title {
+  font-family: "Raleway", sans-serif;
   font-size: 20pt;
   text-align: center;
 }

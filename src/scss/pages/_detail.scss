@@ -7,7 +7,8 @@
 }
 
 .details {
-  width: 1570px;
+  width: 80%;
+  min-width: 1220px;
   margin: calc($padding-size * 4) calc($padding-size * 1.5)
     calc($padding-size * 1.5);
   padding: calc($padding-size / 1.5) calc($padding-size * 2) 0
@@ -25,6 +26,8 @@
   }
   &__info {
     display: flex;
+    // width: 100%;
+    flex-wrap: wrap;
     flex-direction: column;
     padding-top: $padding-size;
     margin: $padding-large-size;
@@ -78,6 +81,7 @@
   width: 100%;
   min-width: 1570px;
   &__title {
+    font-family: 'Raleway', sans-serif;
     font-size: $font-large;
     text-align: center;
   }
