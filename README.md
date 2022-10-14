@@ -7,7 +7,8 @@ Demo site
 ## 사용 스택
 <img src="https://img.shields.io/badge/React 18.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=white"/> <img src="https://img.shields.io/badge/Javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white"/> <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/> <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"/> <img src="https://img.shields.io/badge/Sass(SCSS)-CC6699?style=for-the-badge&logo=sass&logoColor=white"/>
 
-##구현화면
+## 구현 화면
+
 ### Home
 ![movieapp_1](https://user-images.githubusercontent.com/56548122/192761781-11f0a35c-d083-492e-9c24-bf382e5f1260.PNG)
 
